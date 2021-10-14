@@ -1,3 +1,5 @@
+import { Container, List } from "@material-ui/core";
+import Note from "./components/Note";
 import React, { Component } from "react";
 
 class App extends Component {
@@ -26,12 +28,18 @@ class App extends Component {
   }
 
   render() {
+    const { notes } = this.state;
     return (
-      <pre>
-       {JSON.stringify(this.state.notes)}
-      </pre>
+      <Container>
+        <List>
+          {notes.map((note, index) => {
+            return <Note note={note} key={index} />;
+          })}
+        </List>
+      </Container>
     );
   }
+
 }
 
 export default App;
